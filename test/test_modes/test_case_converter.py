@@ -1,4 +1,4 @@
-from pyqode.core import modes
+from pyqodeng.core import modes
 
 
 def get_mode(editor):

@@ -1,10 +1,10 @@
 import os
 import pytest
-from pyqode.qt import QtCore
-from pyqode.qt import QtWidgets
-from pyqode.qt.QtTest import QTest
+from qtpy import QtCore
+from qtpy import QtWidgets
+from qtpy.QtTest import QTest
 import datetime
-from pyqode.core import modes
+from pyqodeng.core import modes
 from test.helpers import editor_open, preserve_settings
 
 

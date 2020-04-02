@@ -1,12 +1,12 @@
 import os
 import sys
-from pyqode.core.api import CodeEdit
-from pyqode.core.backend import NotRunning
-from pyqode.qt import QtWidgets
+from pyqodeng.core.api import CodeEdit
+from pyqodeng.core.backend import NotRunning
+from qtpy import QtWidgets
 import pytest
-from pyqode.qt.QtTest import QTest
-from pyqode.core import backend
-from pyqode.core.managers.backend import BackendManager
+from qtpy.QtTest import QTest
+from pyqodeng.core import backend
+from pyqodeng.core.managers.backend import BackendManager
 from ..helpers import cwd_at, python2_path, server_path, wait_for_connected
 
 

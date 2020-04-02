@@ -8,11 +8,11 @@ Ctrl+D, we also chnage the text to upper case.
 
 """
 import sys
-from pyqode.qt import QtWidgets
+from qtpy import QtWidgets
 
-from pyqode.core import api
-from pyqode.core import modes
-from pyqode.core import panels
+from pyqodeng.core import api
+from pyqodeng.core import modes
+from pyqodeng.core import panels
 
 
 def main():

@@ -1,4 +1,4 @@
-from pyqode.core.api import encodings
+from pyqodeng.core.api import encodings
 
 
 def test_convert_to_code_key():

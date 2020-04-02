@@ -13,8 +13,8 @@ starting point to experiment.
 import logging
 logging.basicConfig(level=logging.DEBUG)
 import sys
-from pyqode.qt import QtWidgets
-from pyqode.core.widgets import GenericCodeEdit
+from qtpy import QtWidgets
+from pyqodeng.core.widgets import GenericCodeEdit
 
 
 def main():

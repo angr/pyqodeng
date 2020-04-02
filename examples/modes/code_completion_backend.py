@@ -4,7 +4,7 @@ This example show you how to setup a code completion provider on the backend
 (the provider will be automatically used when the user request a code
 completion).
 """
-from pyqode.core import backend
+from pyqodeng.core import backend
 
 
 class CustomCodeCompletionProvider:

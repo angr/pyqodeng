@@ -1,8 +1,8 @@
-from pyqode.core.widgets import SplittableTabWidget, SplittableCodeEditTabWidget, GenericCodeEdit, InteractiveConsole
-from pyqode.qt import QtCore
+from pyqodeng.core.widgets import SplittableTabWidget, SplittableCodeEditTabWidget, GenericCodeEdit, InteractiveConsole
+from qtpy import QtCore
 
-from pyqode.core.backend import server
-from pyqode.qt.QtTest import QTest
+from pyqodeng.core.backend import server
+from qtpy.QtTest import QTest
 
 
 def test_splittable_tab_widget():

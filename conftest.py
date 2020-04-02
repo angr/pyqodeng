@@ -23,7 +23,7 @@ def pytest_runtest_setup(item):
     Display test method name in active window title bar
     ;param item: test item to run
     """
-    from pyqode.qt.QtWidgets import QApplication
+    from qtpy.QtWidgets import QApplication
     global EDITOR, APP
     if APP is None:
         APP = QApplication(sys.argv)
@@ -58,8 +58,8 @@ def start_app(request):
     """
     Start application and create the test code editor widget.
     """
-    from pyqode.core.api.code_edit import CodeEdit
-    from pyqode.core.backend import server
+    from pyqodeng.core.api.code_edit import CodeEdit
+    from pyqodeng.core.backend import server
     from test.helpers import setup_editor, wait_for_connected
     global APP, EDITOR
     logging.info('setup session editor')

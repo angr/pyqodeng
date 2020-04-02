@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-from pyqode.core import widgets
+from pyqodeng.core import widgets
 from . import server
 
 

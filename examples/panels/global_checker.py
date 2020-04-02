@@ -6,10 +6,10 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 import sys
 
-from pyqode.qt import QtWidgets
-from pyqode.core.api import CodeEdit
-from pyqode.core.panels import GlobalCheckerPanel
-from pyqode.core.modes import CheckerMode, CheckerMessages
+from qtpy import QtWidgets
+from pyqodeng.core.api import CodeEdit
+from pyqodeng.core.panels import GlobalCheckerPanel
+from pyqodeng.core.modes import CheckerMode, CheckerMessages
 
 # use server from this directory so that checker.py is in sys.path
 import server

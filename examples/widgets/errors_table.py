@@ -2,9 +2,9 @@
 Show the use of the ErrorsTable widget.
 """
 import sys
-from pyqode.qt import QtWidgets
-from pyqode.core.modes import CheckerMessage, CheckerMessages
-from pyqode.core.widgets import ErrorsTable
+from qtpy import QtWidgets
+from pyqodeng.core.modes import CheckerMessage, CheckerMessages
+from pyqodeng.core.widgets import ErrorsTable
 
 app = QtWidgets.QApplication(sys.argv)
 table = ErrorsTable()

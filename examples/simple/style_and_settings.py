@@ -6,10 +6,10 @@ whitespaces.
 
 """
 import sys
-from pyqode.qt import QtWidgets, QtGui
-from pyqode.core import api
-from pyqode.core import modes
-from pyqode.core import panels
+from qtpy import QtWidgets, QtGui
+from pyqodeng.core import api
+from pyqodeng.core import modes
+from pyqodeng.core import panels
 
 
 def main():

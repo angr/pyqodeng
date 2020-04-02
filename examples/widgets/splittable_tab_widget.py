@@ -1,9 +1,9 @@
 import os
 import sys
-from pyqode.qt import QtWidgets
-from pyqode.core.widgets import GenericCodeEdit, InteractiveConsole
-from pyqode.core.backend import server
-from pyqode.core.widgets import SplittableTabWidget
+from qtpy import QtWidgets
+from pyqodeng.core.widgets import GenericCodeEdit, InteractiveConsole
+from pyqodeng.core.backend import server
+from pyqodeng.core.widgets import SplittableTabWidget
 
 
 class MyInteractiveConsole(InteractiveConsole):

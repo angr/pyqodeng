@@ -3,8 +3,8 @@ Regroup functions common to all examples.
 """
 import sys
 import os
-from pyqode.core import api
-from pyqode.qt import QtWidgets
+from pyqodeng.core import api
+from qtpy import QtWidgets
 
 _window = None
 

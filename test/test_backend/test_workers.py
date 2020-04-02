@@ -1,5 +1,5 @@
 import pytest
-from pyqode.core.backend import workers
+from pyqodeng.core.backend import workers
 
 
 def test_echo_worker():

@@ -1,6 +1,6 @@
-from pyqode.qt.QtTest import QTest
-from pyqode.core.api import TextHelper, CodeEdit
-from pyqode.core import modes
+from qtpy.QtTest import QTest
+from pyqodeng.core.api import TextHelper, CodeEdit
+from pyqodeng.core import modes
 
 
 def get_mode(editor):

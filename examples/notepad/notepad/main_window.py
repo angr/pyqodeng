@@ -8,16 +8,16 @@ import weakref
 import mimetypes
 import os
 
-from pyqode.qt import QtCore
-from pyqode.qt import QtWidgets
+from qtpy import QtCore
+from qtpy import QtWidgets
 
-from pyqode.core import api
-from pyqode.core import modes
-from pyqode.core import widgets
+from pyqodeng.core import api
+from pyqodeng.core import modes
+from pyqodeng.core import widgets
 
 from .forms.main_window_ui import Ui_MainWindow
-from pyqode.core.api import ColorScheme
-from pyqode.core.widgets import FileSystemTreeView, FileSystemContextMenu, SplittableCodeEditTabWidget
+from pyqodeng.core.api import ColorScheme
+from pyqodeng.core.widgets import FileSystemTreeView, FileSystemContextMenu, SplittableCodeEditTabWidget
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -243,7 +243,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         QtWidgets.QMessageBox.about(
             self, 'pyQode notepad',
             'This notepad application is an example of what you can do with '
-            'pyqode.core.')
+            'pyqodeng.core.')
 
     def on_cursor_pos_changed(self):
         if self.tabWidget.current_widget():

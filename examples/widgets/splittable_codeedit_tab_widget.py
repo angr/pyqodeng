@@ -1,7 +1,7 @@
 import os
 import sys
-from pyqode.qt import QtWidgets
-from pyqode.core.widgets import SplittableCodeEditTabWidget
+from qtpy import QtWidgets
+from pyqodeng.core.widgets import SplittableCodeEditTabWidget
 
 
 def open_in_explorer():

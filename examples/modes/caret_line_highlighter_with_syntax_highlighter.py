@@ -9,11 +9,11 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 import sys
 
-from pyqode.qt import QtWidgets
-from pyqode.core.api import CodeEdit
-from pyqode.core.backend import server
-from pyqode.core.modes import CaretLineHighlighterMode
-from pyqode.core.modes import PygmentsSyntaxHighlighter
+from qtpy import QtWidgets
+from pyqodeng.core.api import CodeEdit
+from pyqodeng.core.backend import server
+from pyqodeng.core.modes import CaretLineHighlighterMode
+from pyqodeng.core.modes import PygmentsSyntaxHighlighter
 
 
 if __name__ == '__main__':

@@ -4,12 +4,12 @@ Tests the code completion mode
 import functools
 import pytest
 
-from pyqode.qt import QtCore, QtGui
-from pyqode.qt.QtTest import QTest
+from qtpy import QtCore, QtGui
+from qtpy.QtTest import QTest
 
-from pyqode.core.api import TextHelper
-from pyqode.core import modes
-from pyqode.core.modes.code_completion import SubsequenceCompleter
+from pyqodeng.core.api import TextHelper
+from pyqodeng.core import modes
+from pyqodeng.core.modes.code_completion import SubsequenceCompleter
 from ..helpers import server_path, wait_for_connected
 from ..helpers import ensure_visible, ensure_connected
 

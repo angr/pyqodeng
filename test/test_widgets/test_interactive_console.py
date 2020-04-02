@@ -1,5 +1,5 @@
 import sys
-from pyqode.core.widgets import InteractiveConsole
+from pyqodeng.core.widgets import InteractiveConsole
 
 
 def test_console():

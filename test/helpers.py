@@ -8,12 +8,12 @@ import functools
 import platform
 from os.path import abspath
 from os.path import dirname
-from pyqode.core.cache import Cache
-from pyqode.qt import QtWidgets
-from pyqode.core.api import CodeEdit, IndentFoldDetector, ColorScheme
-from pyqode.core import modes
-from pyqode.core import panels
-from pyqode.qt.QtTest import QTest
+from pyqodeng.core.cache import Cache
+from qtpy import QtWidgets
+from pyqodeng.core.api import CodeEdit, IndentFoldDetector, ColorScheme
+from pyqodeng.core import modes
+from pyqodeng.core import panels
+from qtpy.QtTest import QTest
 
 
 test_dir = dirname(abspath(__file__))

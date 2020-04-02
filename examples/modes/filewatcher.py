@@ -5,10 +5,10 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 import sys
 
-from pyqode.qt import QtCore, QtWidgets
-from pyqode.core.api import CodeEdit
-from pyqode.core.backend import server
-from pyqode.core.modes import FileWatcherMode
+from qtpy import QtCore, QtWidgets
+from pyqodeng.core.api import CodeEdit
+from pyqodeng.core.backend import server
+from pyqodeng.core.modes import FileWatcherMode
 
 
 def simulate_external_modifcations():

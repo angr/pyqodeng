@@ -1,8 +1,8 @@
 import os
-from pyqode.core.api import TextHelper
-from pyqode.qt import QtCore, QtGui
-from pyqode.qt.QtTest import QTest
-from pyqode.core import modes
+from pyqodeng.core.api import TextHelper
+from qtpy import QtCore, QtGui
+from qtpy.QtTest import QTest
+from pyqodeng.core import modes
 
 
 def get_mode(editor):

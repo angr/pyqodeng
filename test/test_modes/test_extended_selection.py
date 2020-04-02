@@ -1,7 +1,7 @@
-from pyqode.qt import QtCore, QtGui
-from pyqode.qt.QtTest import QTest
-from pyqode.core.api import TextHelper
-from pyqode.core import modes
+from qtpy import QtCore, QtGui
+from qtpy.QtTest import QTest
+from pyqodeng.core.api import TextHelper
+from pyqodeng.core import modes
 from test.helpers import editor_open
 
 
@@ -33,7 +33,7 @@ def test_extended_selection(editor):
                                   QtCore.Qt.LeftButton,
                                   QtCore.Qt.ControlModifier)
     mode._on_double_click(event)
-    assert editor.textCursor().selectedText() == 'pyqode.qt'
+    assert editor.textCursor().selectedText() == 'qtpy'
     QTest.qWait(1000)
 
 
@@ -84,5 +84,5 @@ def test_line_selection(editor):
     TextHelper(editor).goto_line(0, 2)
     QTest.qWait(1000)
     mode.perform_line_selection()
-    assert editor.textCursor().selectedText() == 'from pyqode.qt import QtCore, QtGui'
+    assert editor.textCursor().selectedText() == 'from qtpy import QtCore, QtGui'
     QTest.qWait(1000)

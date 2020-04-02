@@ -7,7 +7,7 @@ import sys
 import os
 # ensure sys knows about pyqode.core in the test env
 sys.path.insert(0, os.path.abspath('..'))
-from pyqode.core import backend
+from pyqodeng.core import backend
 
 
 if __name__ == '__main__':

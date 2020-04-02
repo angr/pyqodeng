@@ -1,6 +1,6 @@
 import os
-from pyqode.qt.QtTest import QTest
-from pyqode.core import panels
+from qtpy.QtTest import QTest
+from pyqodeng.core import panels
 
 
 PATH = pth = os.path.join(os.getcwd(), 'test', 'files', 'big5hkscs.txt')

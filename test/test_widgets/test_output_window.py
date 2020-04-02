@@ -1,6 +1,6 @@
 import os
-from pyqode.core.widgets import output_window
-from pyqode.qt import QtTest, QtCore
+from pyqodeng.core.widgets import output_window
+from qtpy import QtTest, QtCore
 
 
 DIRECTORY = os.path.dirname(__file__)
@@ -20,7 +20,7 @@ def test_parser():
     op = operations[550]
     assert op.command == 'draw'
     assert isinstance(op.data, output_window.FormattedText)
-    from pyqode.qt import QtGui
+    from qtpy import QtGui
     assert isinstance(op.data.fmt, QtGui.QTextCharFormat)
     assert op.data.txt == 'bold+underl'
     assert op.data.fmt.fontUnderline() is True

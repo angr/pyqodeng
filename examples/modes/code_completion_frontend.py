@@ -13,9 +13,9 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 import sys
 
-from pyqode.qt import QtWidgets
-from pyqode.core.api import CodeEdit
-from pyqode.core.modes import CodeCompletionMode
+from qtpy import QtWidgets
+from pyqodeng.core.api import CodeEdit
+from pyqodeng.core.modes import CodeCompletionMode
 
 
 # use a custom server that show how to create a custom code completion provider

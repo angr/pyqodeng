@@ -4,7 +4,7 @@
 Simple server which adds a DocumentWordsProvider to the CodeCompletion worker.
 
 """
-from pyqode.core import backend
+from pyqodeng.core import backend
 
 if __name__ == '__main__':
     backend.CodeCompletionWorker.providers.append(

@@ -1,8 +1,8 @@
-from pyqode.core.api import utils
-from pyqode.qt import QtWidgets, QtGui
-from pyqode.qt.QtTest import QTest
+from pyqodeng.core.api import utils
+from qtpy import QtWidgets, QtGui
+from qtpy.QtTest import QTest
 import time
-from pyqode.core.api import CodeEdit
+from pyqodeng.core.api import CodeEdit
 
 
 def test_memoized():

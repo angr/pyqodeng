@@ -4,8 +4,8 @@ Test pyqode.core.settings
 import os
 import locale
 import pytest
-from pyqode.core.api import convert_to_codec_key
-from pyqode.core.cache import Cache
+from pyqodeng.core.api import convert_to_codec_key
+from pyqodeng.core.cache import Cache
 
 
 def test_preferred_encodings():

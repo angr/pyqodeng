@@ -5,10 +5,10 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 import sys
 
-from pyqode.qt import QtWidgets
-from pyqode.core.api import CodeEdit, TextHelper
-from pyqode.core.backend import server
-from pyqode.core.modes import SmartBackSpaceMode
+from qtpy import QtWidgets
+from pyqodeng.core.api import CodeEdit, TextHelper
+from pyqodeng.core.backend import server
+from pyqodeng.core.modes import SmartBackSpaceMode
 
 
 if __name__ == '__main__':

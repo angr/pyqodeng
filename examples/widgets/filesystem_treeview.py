@@ -5,8 +5,8 @@ content of test_dir).
 import logging
 import os
 import sys
-from pyqode.core.widgets import FileSystemTreeView, FileSystemContextMenu
-from pyqode.qt import QtWidgets
+from pyqodeng.core.widgets import FileSystemTreeView, FileSystemContextMenu
+from qtpy import QtWidgets
 
 
 logging.basicConfig(level=logging.DEBUG)

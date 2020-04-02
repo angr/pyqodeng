@@ -5,14 +5,14 @@ import mimetypes
 import os
 import platform
 import pytest
-from pyqode.core.api import CodeEdit
+from pyqodeng.core.api import CodeEdit
 
-from pyqode.core.api.panel import Panel
-from pyqode.core.api.utils import TextHelper
-from pyqode.core import panels, modes
+from pyqodeng.core.api.panel import Panel
+from pyqodeng.core.api.utils import TextHelper
+from pyqodeng.core import panels, modes
 
-from pyqode.qt import QtWidgets, QtCore, QtGui
-from pyqode.qt.QtTest import QTest
+from qtpy import QtWidgets, QtCore, QtGui
+from qtpy.QtTest import QTest
 
 
 

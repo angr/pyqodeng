@@ -2,7 +2,7 @@
 """
 This module tests the classes: Mode an Panels
 """
-from pyqode.qt.QtTest import QTest
+from qtpy.QtTest import QTest
 
 import pytest
 from ..helpers import editor_open
@@ -14,7 +14,7 @@ def test_modes(editor):
     Test to install, retrieve and remove a mode.
 
     """
-    from pyqode.core.modes import CaseConverterMode
+    from pyqodeng.core.modes import CaseConverterMode
     editor.modes.clear()
     mode = CaseConverterMode()
     editor.modes.append(mode)
@@ -33,7 +33,7 @@ def test_panels(editor):
     Test to install, retrieve and remove a panel
 
     """
-    from pyqode.core.panels import LineNumberPanel
+    from pyqodeng.core.panels import LineNumberPanel
     panel = LineNumberPanel()
     editor.panels.append(panel, panel.Position.LEFT)
     QTest.qWait(1000)
@@ -56,8 +56,8 @@ def test_uninstall_all(editor):
     editor.modes.clear()
     assert len(editor.modes) == 0
     assert len(editor.panels) == 0
-    from pyqode.core.modes import CaseConverterMode
-    from pyqode.core.panels import LineNumberPanel
+    from pyqodeng.core.modes import CaseConverterMode
+    from pyqodeng.core.panels import LineNumberPanel
     editor.modes.append(CaseConverterMode())
     editor.panels.append(LineNumberPanel(), LineNumberPanel.Position.LEFT)
     assert len(editor.modes) == 1

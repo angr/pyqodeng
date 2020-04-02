@@ -20,7 +20,7 @@ import os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('../..'))
-from pyqode.core import __version__
+from pyqodeng.core import __version__
 
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'pyqode.core'
+project = u'pyqodeng.core'
 copyright = u'2013-2016, Colin Duquesnoy'
 
 # The version info for the project you're documenting, acts as replacement for

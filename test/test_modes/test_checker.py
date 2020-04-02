@@ -1,8 +1,8 @@
 import random
-from pyqode.qt.QtTest import QTest
+from qtpy.QtTest import QTest
 import sys
 import pytest
-from pyqode.core import modes, panels
+from pyqodeng.core import modes, panels
 
 from ..helpers import wait_for_connected, editor_open
 from ..helpers import server_path

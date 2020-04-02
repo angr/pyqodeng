@@ -1,5 +1,5 @@
-from pyqode.core.widgets import FileSystemTreeView, FileSystemContextMenu
-from pyqode.qt.QtTest import QTest
+from pyqodeng.core.widgets import FileSystemTreeView, FileSystemContextMenu
+from qtpy.QtTest import QTest
 
 
 def test_fs_treeview():

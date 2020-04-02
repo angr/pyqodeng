@@ -13,10 +13,10 @@ starting point to experiment.
 import logging
 logging.basicConfig(level=logging.DEBUG)
 import sys
-from pyqode.core import api
-from pyqode.core import modes
-from pyqode.core import panels
-from pyqode.qt import QtWidgets
+from pyqodeng.core import api
+from pyqodeng.core import modes
+from pyqodeng.core import panels
+from qtpy import QtWidgets
 
 
 def main():

@@ -2,9 +2,9 @@
 This example show how to use the OutputWindow widget.
 """
 import sys
-from pyqode.qt import QtWidgets
+from qtpy import QtWidgets
 
-from pyqode.core.widgets import OutputWindow
+from pyqodeng.core.widgets import OutputWindow
 
 
 if __name__ == '__main__':

@@ -6,11 +6,11 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 import sys
 
-from pyqode.qt import QtWidgets
-from pyqode.core.api import CodeEdit, IndentFoldDetector
-from pyqode.core.backend import server
-from pyqode.core.modes import PygmentsSH
-from pyqode.core.panels import FoldingPanel
+from qtpy import QtWidgets
+from pyqodeng.core.api import CodeEdit, IndentFoldDetector
+from pyqodeng.core.backend import server
+from pyqodeng.core.modes import PygmentsSH
+from pyqodeng.core.panels import FoldingPanel
 
 
 if __name__ == '__main__':

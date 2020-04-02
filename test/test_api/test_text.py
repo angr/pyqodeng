@@ -6,10 +6,10 @@ import mimetypes
 import os
 import sys
 import pytest
-from pyqode.core.api.utils import TextHelper, keep_tc_pos
+from pyqodeng.core.api.utils import TextHelper, keep_tc_pos
 
-from pyqode.qt import QtGui, QtWidgets
-from pyqode.qt.QtTest import QTest
+from qtpy import QtGui, QtWidgets
+from qtpy.QtTest import QTest
 from ..helpers import editor_open
 
 
@@ -254,7 +254,7 @@ def test_keep_tc(editor):
 
 @editor_open(__file__)
 def test_get_mimetype(editor):
-    from pyqode.core import managers
+    from pyqodeng.core import managers
     assert managers.FileManager.get_mimetype('file.py') == 'text/x-python'
     assert managers.FileManager.get_mimetype('file.ui') == 'text/xml'
     assert managers.FileManager.get_mimetype('file.foo') == 'text/x-plain'

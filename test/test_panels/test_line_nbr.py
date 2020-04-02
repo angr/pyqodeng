@@ -1,7 +1,7 @@
-from pyqode.core.api import TextHelper
-from pyqode.qt import QtCore, QtWidgets, QtGui
-from pyqode.qt.QtTest import QTest
-from pyqode.core import panels
+from pyqodeng.core.api import TextHelper
+from qtpy import QtCore, QtWidgets, QtGui
+from qtpy.QtTest import QTest
+from pyqodeng.core import panels
 from test.helpers import editor_open
 
 

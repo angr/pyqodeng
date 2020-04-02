@@ -1,8 +1,8 @@
 import os
-from pyqode.qt import QtCore
-from pyqode.qt import QtGui
-from pyqode.qt.QtTest import QTest
-from pyqode.core import modes
+from qtpy import QtCore
+from qtpy import QtGui
+from qtpy.QtTest import QTest
+from pyqodeng.core import modes
 
 
 def test_enabled(editor):

@@ -1,9 +1,9 @@
 import os
 import pytest
-from pyqode.core.api import TextHelper, TextBlockHelper
-from pyqode.qt import QtCore
-from pyqode.qt.QtTest import QTest
-from pyqode.core import panels
+from pyqodeng.core.api import TextHelper, TextBlockHelper
+from qtpy import QtCore
+from qtpy.QtTest import QTest
+from pyqodeng.core import panels
 from test.helpers import editor_open, ensure_visible
 
 
