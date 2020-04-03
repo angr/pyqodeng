@@ -38,7 +38,7 @@ def _logger():
     return logging.getLogger(__name__)
 
 
-class FoldDetector(object):
+class FoldDetector:
     """
     Base class for fold detectors.
 
@@ -179,7 +179,7 @@ class CharBasedFoldDetector(FoldDetector):
         return TextBlockHelper.get_fold_lvl(prev_block)
 
 
-class FoldScope(object):
+class FoldScope:
     """
     Utility class for manipulating fold-able code scope (fold/unfold,
     get range, child and parent scopes and so on).

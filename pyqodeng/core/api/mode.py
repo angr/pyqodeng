@@ -8,7 +8,7 @@ def _logger():
     return logging.getLogger(__name__)
 
 
-class Mode(object):
+class Mode:
     """
     Base class for editor extensions. An extension is a "thing" that can be
     installed on an editor to add new behaviours or to modify its appearance.

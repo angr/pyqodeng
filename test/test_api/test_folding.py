@@ -7,7 +7,7 @@ from pyqodeng.core.api import folding, TextBlockHelper, TextHelper
 from qtpy.QtTest import QTest
 
 
-class FoldDetectorTestCase(object):
+class FoldDetectorTestCase:
     """
     Checks that the fold detector detects the corret layout when loading
     files (or setting text). Dynamic checks (i.e. when the user edit the text
@@ -53,7 +53,7 @@ def test_base_fold_indenter():
         f.detect_fold_level(None, None)
 
 
-class DynamicFoldDetectorTestCase(object):
+class DynamicFoldDetectorTestCase:
     """
     A dynamic test consists in loading a file and performing a few predefined
     actions (such as going to a specific line/column, pressing a key) and then

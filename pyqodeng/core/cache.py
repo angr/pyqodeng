@@ -29,7 +29,7 @@ except:
     pass  # python 3.2 not supported
 
 
-class Cache(object):
+class Cache:
     """
     Provides an easy acces to the cache by exposing some wrapper properties
     over QSettings.

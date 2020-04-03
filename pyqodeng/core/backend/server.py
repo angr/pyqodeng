@@ -212,7 +212,7 @@ def serve_forever(args=None):
         argument parser. Default is None to let the JsonServer setup its own
         parser and parse command line arguments.
     """
-    class Unbuffered(object):
+    class Unbuffered:
         def __init__(self, stream):
             self.stream = stream
 

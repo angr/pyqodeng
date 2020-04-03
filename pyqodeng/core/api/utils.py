@@ -14,7 +14,7 @@ def _logger():
     return logging.getLogger(__name__)
 
 
-class memoized(object):
+class memoized:
     """
     Decorator. Caches a function's return value each time it is called.
     If called later with the same arguments, the cached value is returned
@@ -66,7 +66,7 @@ def drift_color(base_color, factor=110):
             return base_color.lighter(factor + 10)
 
 
-class DelayJobRunner(object):
+class DelayJobRunner:
     """
     Utility class for running job after a certain delay. If a new request is
     made during this delay, the previous request is dropped and the timer is
@@ -124,7 +124,7 @@ class DelayJobRunner(object):
         self._job(*self._args, **self._kwargs)
 
 
-class TextHelper(object):
+class TextHelper:
     """
     Text helper helps you manipulate the content of CodeEdit and extends the
     Qt text api for an easier usage.
@@ -873,7 +873,7 @@ class TextHelper(object):
             return False
 
 
-class TextBlockHelper(object):
+class TextBlockHelper:
     """
     Helps retrieving the various part of the user state bitmask.
 
@@ -1032,7 +1032,7 @@ class TextBlockHelper(object):
         block.setUserState(state)
 
 
-class ParenthesisInfo(object):
+class ParenthesisInfo:
     """
     Stores information about a parenthesis in a line of code.
     """

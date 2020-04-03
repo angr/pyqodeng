@@ -11,7 +11,7 @@ def test_memoized():
         print(args)
         return 2
 
-    class Memoized(object):
+    class Memoized:
         @utils.memoized
         def memoized(*args):
             print(args)

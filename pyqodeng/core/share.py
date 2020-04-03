@@ -5,7 +5,7 @@ without requiring any additional libraries).
 """
 
 
-class Definition(object):
+class Definition:
     """
     Represents a definition in a source file.
 

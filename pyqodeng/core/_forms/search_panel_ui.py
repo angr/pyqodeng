@@ -8,7 +8,7 @@
 
 from qtpy import QtCore, QtGui, QtWidgets
 
-class Ui_SearchPanel(object):
+class Ui_SearchPanel:
     def setupUi(self, SearchPanel):
         SearchPanel.setObjectName("SearchPanel")
         SearchPanel.resize(884, 90)

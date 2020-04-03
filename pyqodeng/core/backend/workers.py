@@ -33,7 +33,7 @@ def echo_worker(data):
     return data
 
 
-class CodeCompletionWorker(object):
+class CodeCompletionWorker:
     """
     This is the worker associated with the code completion mode.
 
@@ -52,7 +52,7 @@ class CodeCompletionWorker(object):
     #: The list of code completion provider to run on each completion request.
     providers = []
 
-    class Provider(object):
+    class Provider:
         """
         This class describes the expected interface for code completion
         providers.
@@ -117,7 +117,7 @@ class CodeCompletionWorker(object):
         return [(line, column, req_id)] + completions
 
 
-class DocumentWordsProvider(object):
+class DocumentWordsProvider:
     """
     Provides completions based on the document words
     """

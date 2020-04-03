@@ -455,7 +455,7 @@ FormattedText = namedtuple('FormattedText', 'txt fmt')
 Operation = namedtuple('Operation', 'command data')
 
 
-class AnsiEscapeCodeParser(object):
+class AnsiEscapeCodeParser:
     """
     The AnsiEscapeCodeParser class parses text and extracts ANSI escape codes from it.
 
@@ -788,7 +788,7 @@ def _ansi_color(code, theme):
 # ----------------------------------------------------------------------------------------------------------------------
 # Input handlers
 # ----------------------------------------------------------------------------------------------------------------------
-class InputHandler(object):
+class InputHandler:
     """
     Base class for handling user inputs
     """
@@ -917,7 +917,7 @@ def _qkey_to_ascii(event):
             return None
 
 
-class CommandHistory(object):
+class CommandHistory:
     """
     A very basic history of commands.
 
@@ -1091,7 +1091,7 @@ class OutputFormat:
     CustomFormat = 2
 
 
-class OutputFormatter(object):
+class OutputFormatter:
     """
     Perform formatting (draw text, move cursor,...).
     """

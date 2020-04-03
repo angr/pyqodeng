@@ -11,7 +11,7 @@ from pyqodeng.core.api.utils import DelayJobRunner
 from qtpy import QtCore, QtGui
 
 
-class CheckerMessages(object):
+class CheckerMessages:
     """
     Enumerates the possible checker message types.
     """
@@ -23,7 +23,7 @@ class CheckerMessages(object):
     ERROR = 2
 
 
-class CheckerMessage(object):
+class CheckerMessage:
     """
     Holds data for a message displayed by the
     :class:`pyqode.core.modes.CheckerMode`.

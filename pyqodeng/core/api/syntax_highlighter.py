@@ -72,7 +72,7 @@ COLOR_SCHEME_KEYS = {
 }
 
 
-class ColorScheme(object):
+class ColorScheme:
     """
     Translates a pygments style into a dictionary of colors associated with a
     style key.

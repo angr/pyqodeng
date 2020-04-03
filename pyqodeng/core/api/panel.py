@@ -20,7 +20,7 @@ class Panel(QtWidgets.QWidget, Mode):
     .. note:: Use enabled to disable panel actions and setVisible to change the
         visibility of the panel.
     """
-    class Position(object):
+    class Position:
         """
         Enumerates the possible panel positions
         """

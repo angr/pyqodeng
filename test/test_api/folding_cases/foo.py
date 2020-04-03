@@ -6,7 +6,7 @@ import os
 import sys
 
 
-class Foo(object):
+class Foo:
     """
     Foo class
     """
