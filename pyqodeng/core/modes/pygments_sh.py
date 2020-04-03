@@ -258,7 +258,7 @@ class PygmentsSH(SyntaxHighlighter):
         """
         Highlights the block using a pygments lexer.
 
-        :param text: text of the block to highlith
+        :param text: text of the block to highlight
         :param block: block to highlight
         """
         if self.color_scheme.name != self._pygments_style:
