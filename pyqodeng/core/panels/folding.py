@@ -609,10 +609,11 @@ class FoldingPanel(Panel):
 
     def mousePressEvent(self, event):
         """ Folds/unfolds the pressed indicator if any. """
-        if self._mouse_over_line is not None:
-            block = self.editor.document().findBlockByNumber(
-                self._mouse_over_line)
-            self.toggle_fold_trigger(block)
+        if event.button() == QtCore.Qt.LeftButton:
+            if self._mouse_over_line is not None:
+                block = self.editor.document().findBlockByNumber(
+                    self._mouse_over_line)
+                self.toggle_fold_trigger(block)
 
     def _on_fold_deco_clicked(self, deco):
         """
