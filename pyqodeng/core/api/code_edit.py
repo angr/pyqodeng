@@ -4,13 +4,9 @@ This module contains the base code editor widget.
 from __future__ import print_function
 import os
 import sys
-try:
-    from future.builtins import str, super
-except:
-    # not availabe on python 3.2 (but not needed)
-    pass
 import logging
-import platform
+from functools import wraps
+
 from pyqodeng.core import icons
 from pyqodeng.core.cache import Cache
 from pyqodeng.core.api.utils import DelayJobRunner, TextHelper
@@ -28,6 +24,15 @@ from qtpy import QtWidgets, QtCore, QtGui
 def _logger():
     """ Returns module's logger """
     return logging.getLogger(__name__)
+
+
+def skip_if_readonly(f):
+    @wraps
+    def wrapped(self, *args, **kwargs):
+        if self.isReadOnly():
+            return
+        return f(self, *args, **kwargs)
+    return wrapped
 
 
 class CodeEdit(QtWidgets.QPlainTextEdit):
@@ -835,6 +840,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         TextHelper(self).mark_whole_doc_dirty()
         self._reset_stylesheet()
 
+    @skip_if_readonly
     def duplicate_line(self):
         """
         Duplicates the line under the cursor. If multiple lines are selected,
@@ -1000,6 +1006,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         super(CodeEdit, self).paintEvent(e)
         self.painted.emit(e)
 
+    @skip_if_readonly
     def keyPressEvent(self, event):
         """
         Overrides the keyPressEvent to emit the key_pressed signal.
@@ -1008,8 +1015,6 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
 
         :param event: QKeyEvent
         """
-        if self.isReadOnly():
-            return
         initial_state = event.isAccepted()
         event.ignore()
         self.key_pressed.emit(event)
@@ -1035,14 +1040,13 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         self.post_key_pressed.emit(event)
         event.setAccepted(new_state)
 
+    @skip_if_readonly
     def keyReleaseEvent(self, event):
         """
         Overrides keyReleaseEvent to emit the key_released signal.
 
         :param event: QKeyEvent
         """
-        if self.isReadOnly():
-            return
         initial_state = event.isAccepted()
         event.ignore()
         self.key_released.emit(event)
