@@ -32,6 +32,7 @@ ENCODINGS_MAP = {
     "cp874": ("IBM874", "Thai"),
     "cp875": ("IBM875", "Greek"),
     "cp932": ("IBM932", "Japanese"),
+    "cp936": ("IBM936", "Chinese simplified"),
     "cp949": ("IBM949", "Korean"),
     "cp950": ("IBM950", "Chinese traditional"),
     "cp1006": ("IBM1006", "Urdu"),
