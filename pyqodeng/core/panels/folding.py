@@ -9,7 +9,7 @@ from pyqodeng.core.api import TextBlockHelper, folding, TextDecoration, \
     DelayJobRunner
 from pyqodeng.core.api.folding import FoldScope
 from pyqodeng.core.api.panel import Panel
-from qtpy import QtCore, QtWidgets, QtGui, PYQT5_API
+from qtpy import QtCore, QtWidgets, QtGui, PYQT5_API, PYSIDE2_API
 from pyqodeng.core.api.utils import TextHelper, drift_color, keep_tc_pos
 
 
@@ -357,7 +357,7 @@ class FoldingPanel(Panel):
         rect = QtCore.QRect(0, top, self.sizeHint().width(),
                             self.sizeHint().height())
         if self._native:
-            if os.environ['QT_API'].lower() not in PYQT5_API:
+            if os.environ['QT_API'].lower() not in PYQT5_API and os.environ['QT_API'].lower() not in PYSIDE2_API:
                 opt = QtGui.QStyleOptionViewItemV2()
             else:
                 opt = QtWidgets.QStyleOptionViewItem()
