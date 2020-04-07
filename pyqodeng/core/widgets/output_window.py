@@ -17,7 +17,7 @@ from pyqodeng.core.api.client import PROCESS_ERROR_STRING
 from pyqodeng.core.backend import server
 from qtpy import QtWidgets, QtGui, QtCore
 from qtpy.QtGui import QColor
-from qtpy.QtWidgets import qApp
+from qtpy.QtWidgets import QApplication
 
 from . import pty_wrapper
 
@@ -190,7 +190,7 @@ class OutputWindow(CodeEdit):
         """
         Paste the content of the clipboard to the child process'stdtin.
         """
-        self.input_handler.paste(QtWidgets.qApp.clipboard().text())
+        self.input_handler.paste(QtWidgets.QApplication.instance().clipboard().text())
 
     @staticmethod
     def create_color_scheme(background=None, foreground=None, error=None, custom=None, red=None,
@@ -213,9 +213,9 @@ class OutputWindow(CodeEdit):
         :return: A ColorScheme instance.
         """
         if background is None:
-            background = qApp.palette().base().color()
+            background = QApplication.instance().palette().base().color()
         if foreground is None:
-            foreground = qApp.palette().text().color()
+            foreground = QApplication.instance().palette().text().color()
         is_light = background.lightness() >= 128
         if error is None:
             if is_light:
@@ -441,7 +441,7 @@ class _LinkHighlighter(SyntaxHighlighter):
             if match:
                 start, end = match.span('url')
                 fmt = QtGui.QTextCharFormat()
-                fmt.setForeground(QtWidgets.qApp.palette().highlight().color())
+                fmt.setForeground(QtWidgets.QApplication.instance().palette().highlight().color())
                 fmt.setUnderlineStyle(fmt.SingleUnderline)
                 self.setFormat(start, end - start, fmt)
 
@@ -526,8 +526,8 @@ class AnsiEscapeCodeParser:
 
     def __init__(self):
         fmt = QtGui.QTextCharFormat()
-        fmt.setForeground(QtWidgets.qApp.palette().text().color())
-        fmt.setBackground(QtWidgets.qApp.palette().base().color())
+        fmt.setForeground(QtWidgets.QApplication.instance().palette().text().color())
+        fmt.setBackground(QtWidgets.QApplication.instance().palette().base().color())
         FormattedText.__new__.__defaults__ = '', fmt
         self._prev_fmt_closed = True
         self._prev_fmt = fmt
@@ -852,7 +852,7 @@ def _qkey_to_ascii(event):
         elif event.key() == QtCore.Qt.Key_O:
             return b'\x0F'
         elif event.key() == QtCore.Qt.Key_V:
-            return QtWidgets.qApp.clipboard().text().encode('utf-8')
+            return QtWidgets.QApplication.instance().clipboard().text().encode('utf-8')
         else:
             return None
     else:
@@ -1011,7 +1011,7 @@ class BufferedInputHandler(InputHandler):
             return False
         if ctrl:
             if shift and event.key() == QtCore.Qt.Key_V:
-                self.edit.insertPlainText(QtWidgets.qApp.clipboard().text())
+                self.edit.insertPlainText(QtWidgets.QApplication.instance().clipboard().text())
                 return False
             elif event.key() == QtCore.Qt.Key_L:
                 self.edit.clear()
