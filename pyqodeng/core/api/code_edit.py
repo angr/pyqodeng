@@ -663,12 +663,12 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         self.redoAvailable.emit(False)
         self.undoAvailable.emit(False)
 
-    def add_action(self, action, sub_menu='Advanced'):
+    def add_action(self, action, sub_menu=None):
         """
         Adds an action to the editor's context menu.
 
         :param action: QAction to add to the context menu.
-        :param sub_menu: The name of a sub menu where to put the action.
+        :param Optional[str] sub_menu: The name of a sub menu where to put the action.
             'Advanced' by default. If None or empty, the action will be added
             at the root of the submenu.
         """
@@ -728,12 +728,12 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
             self._actions.append(action)
         return action
 
-    def remove_action(self, action, sub_menu='Advanced'):
+    def remove_action(self, action, sub_menu=None):
         """
         Removes an action/separator from the editor's context menu.
 
-        :param action: Action/seprator to remove.
-        :param advanced: True to remove the action from the advanced submenu.
+        :param action: Action/separator to remove.
+        :param Optional[str] sub_menu: Name of the sub_menu to remove action from.
         """
         if sub_menu:
             try:
@@ -1260,6 +1260,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
             action.triggered.connect(self.paste)
             self.add_action(action, sub_menu=None)
             self.action_paste = action
+
         # duplicate line
         action = QtWidgets.QAction(_('Duplicate line'), self)
         action.setShortcut('Ctrl+D')
@@ -1287,6 +1288,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         self.action_select_all = action
         self.add_action(self.action_select_all, sub_menu=None)
         self.add_separator(sub_menu=None)
+
         if create_standard_actions:
             # indent
             action = QtWidgets.QAction(_('Indent'), self)
@@ -1295,7 +1297,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
                 'format-indent-more',
                 ':/pyqode-icons/rc/format-indent-more.png', 'fa.indent'))
             action.triggered.connect(self.indent)
-            self.add_action(action)
+            self.add_action(action, sub_menu="Advanced")
             self.action_indent = action
             # unindent
             action = QtWidgets.QAction(_('Un-indent'), self)
@@ -1304,7 +1306,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
                 'format-indent-less',
                 ':/pyqode-icons/rc/format-indent-less.png', 'fa.dedent'))
             action.triggered.connect(self.un_indent)
-            self.add_action(action)
+            self.add_action(action, sub_menu="Advanced")
             self.action_un_indent = action
             self.add_separator()
         # goto
@@ -1313,7 +1315,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         action.setIcon(icons.icon(
             'go-jump', ':/pyqode-icons/rc/goto-line.png', 'fa.share'))
         action.triggered.connect(self.goto_line)
-        self.add_action(action)
+        self.add_action(action, sub_menu="Advanced")
         self.action_goto_line = action
 
     def _init_settings(self):
