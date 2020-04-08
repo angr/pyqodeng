@@ -27,7 +27,7 @@ def _logger():
 
 
 def skip_if_readonly(f):
-    @wraps
+    @wraps(f)
     def wrapped(self, *args, **kwargs):
         if self.isReadOnly():
             return
@@ -940,6 +940,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
     def swapLineDown(self):
         self.__swapLine(False)
 
+    @skip_if_readonly
     def __swapLine(self, up):
         has_selection = self.textCursor().hasSelection()
         helper = TextHelper(self)
