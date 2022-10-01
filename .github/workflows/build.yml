@@ -1,0 +1,17 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: test ubuntu 20.04
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.8"
+    - run: pip install .
+    - run: pip install -U pytest pytest-forked pytest-cov
+    - run: pytest --forked --cov=pyqodeng
+
