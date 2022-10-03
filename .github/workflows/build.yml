@@ -15,4 +15,6 @@ jobs:
     - run: pip install .
     - run: pip install -U pytest pytest-forked pytest-cov
     - run: pytest --forked --cov=pyqodeng
+      env:
+        QT_QPA_PLATFORM: minimal
 
