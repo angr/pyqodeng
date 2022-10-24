@@ -312,7 +312,7 @@ class FileManager(Manager):
     def _reset_selection(self, sel_end, sel_start):
         text_cursor = self.editor.textCursor()
         text_cursor.setPosition(sel_start)
-        text_cursor.setPosition(sel_end, text_cursor.KeepAnchor)
+        text_cursor.setPosition(sel_end, QtGui.QTextCursor.KeepAnchor)
         self.editor.setTextCursor(text_cursor)
 
     def _get_selection(self):

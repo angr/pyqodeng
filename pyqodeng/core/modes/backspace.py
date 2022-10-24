@@ -33,7 +33,7 @@ class SmartBackSpaceMode(Mode):
             cursor = QtGui.QTextCursor(self.editor.textCursor())
             while spaces < tab_len or cursor.atBlockStart():
                 pos = cursor.position()
-                cursor.movePosition(cursor.Left, cursor.KeepAnchor)
+                cursor.movePosition(QtGui.QTextCursor.Left, QtGui.QTextCursor.KeepAnchor)
                 char = cursor.selectedText()
                 if char == " ":
                     spaces += 1

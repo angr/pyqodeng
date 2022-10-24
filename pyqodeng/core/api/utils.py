@@ -159,7 +159,7 @@ class TextHelper:
         """
         text_cursor = self.move_cursor_to(line)
         if column:
-            text_cursor.movePosition(text_cursor.Right, text_cursor.MoveAnchor,
+            text_cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.MoveAnchor,
                                      column)
         if move:
             block = text_cursor.block()
@@ -207,7 +207,7 @@ class TextHelper:
         # select char by char until we are at the original cursor position.
         while not text_cursor.atStart():
             text_cursor.movePosition(
-                text_cursor.Left, text_cursor.KeepAnchor, 1)
+                QtGui.QTextCursor.Left, QtGui.QTextCursor.KeepAnchor, 1)
             try:
                 char = text_cursor.selectedText()[0]
                 word_separators = editor.word_separators
@@ -224,8 +224,8 @@ class TextHelper:
             # select the resot of the word
             text_cursor.setPosition(end_pos)
             while not text_cursor.atEnd():
-                text_cursor.movePosition(text_cursor.Right,
-                                         text_cursor.KeepAnchor, 1)
+                text_cursor.movePosition(QtGui.QTextCursor.Right,
+                                         QtGui.QTextCursor.KeepAnchor, 1)
                 char = text_cursor.selectedText()[0]
                 selected_txt = text_cursor.selectedText()
                 if (selected_txt in word_separators and
@@ -236,7 +236,7 @@ class TextHelper:
                 text_cursor.setPosition(end_pos)
         # now that we habe the boundaries, we can select the text
         text_cursor.setPosition(start_pos)
-        text_cursor.setPosition(end_pos, text_cursor.KeepAnchor)
+        text_cursor.setPosition(end_pos, QtGui.QTextCursor.KeepAnchor)
         return text_cursor
 
     def word_under_mouse_cursor(self):
@@ -349,8 +349,8 @@ class TextHelper:
         """
         editor = self._editor
         text_cursor = editor.textCursor()
-        text_cursor.movePosition(text_cursor.End, text_cursor.MoveAnchor)
-        text_cursor.select(text_cursor.LineUnderCursor)
+        text_cursor.movePosition(QtGui.QTextCursor.End, QtGui.QTextCursor.MoveAnchor)
+        text_cursor.select(QtGui.QTextCursor.LineUnderCursor)
         text_cursor.removeSelectedText()
         text_cursor.deletePreviousChar()
         editor.setTextCursor(text_cursor)
@@ -401,14 +401,14 @@ class TextHelper:
         doc = editor.document()
         assert isinstance(doc, QtGui.QTextDocument)
         text_cursor = self.move_cursor_to(pos[0])
-        text_cursor.movePosition(text_cursor.StartOfLine,
-                                 text_cursor.MoveAnchor)
+        text_cursor.movePosition(QtGui.QTextCursor.StartOfLine,
+                                 QtGui.QTextCursor.MoveAnchor)
         cpos = text_cursor.position()
         text_cursor.select(text_cursor.LineUnderCursor)
         if text_cursor.selectedText():
             text_cursor.setPosition(cpos)
             offset = pos[1] - eaten
-            text_cursor.movePosition(text_cursor.Right, text_cursor.MoveAnchor,
+            text_cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.MoveAnchor,
                                      offset)
         else:
             text_cursor.setPosition(cpos)
@@ -465,31 +465,31 @@ class TextHelper:
             start = 0
         text_cursor = self.move_cursor_to(start)
         if select_blocks:
-            move_start = text_cursor.StartOfBlock
-            move_end = text_cursor.EndOfBlock
-            move_up = text_cursor.PreviousBlock
-            move_down = text_cursor.NextBlock
+            move_start = QtGui.QTextCursor.StartOfBlock
+            move_end = QtGui.QTextCursor.EndOfBlock
+            move_up = QtGui.QTextCursor.PreviousBlock
+            move_down = QtGui.QTextCursor.NextBlock
         else:
-            move_start = text_cursor.StartOfLine
-            move_end = text_cursor.EndOfLine
-            move_up = text_cursor.Up
-            move_down = text_cursor.Down
+            move_start = QtGui.QTextCursor.StartOfLine
+            move_end = QtGui.QTextCursor.EndOfLine
+            move_up = QtGui.QTextCursor.Up
+            move_down = QtGui.QTextCursor.Down
         if end > start:  # Going down
             text_cursor.movePosition(move_down,
-                                     text_cursor.KeepAnchor, end - start)
+                                     QtGui.QTextCursor.KeepAnchor, end - start)
             text_cursor.movePosition(move_end,
-                                     text_cursor.KeepAnchor)
+                                     QtGui.QTextCursor.KeepAnchor)
         elif end < start:  # going up
             # don't miss end of line !
             text_cursor.movePosition(move_end,
-                                     text_cursor.MoveAnchor)
+                                     QtGui.QTextCursor.MoveAnchor)
             text_cursor.movePosition(move_up,
-                                     text_cursor.KeepAnchor, start - end)
+                                     QtGui.QTextCursor.KeepAnchor, start - end)
             text_cursor.movePosition(move_start,
-                                     text_cursor.KeepAnchor)
+                                     QtGui.QTextCursor.KeepAnchor)
         else:
             text_cursor.movePosition(move_end,
-                                     text_cursor.KeepAnchor)
+                                     QtGui.QTextCursor.KeepAnchor)
         if apply_selection:
             editor.setTextCursor(text_cursor)
         return text_cursor
@@ -551,7 +551,7 @@ class TextHelper:
         Marks the whole document as dirty to force a full refresh. **SLOW**
         """
         text_cursor = self._editor.textCursor()
-        text_cursor.select(text_cursor.Document)
+        text_cursor.select(QtGui.QTextCursor.Document)
         self._editor.document().markContentsDirty(text_cursor.selectionStart(),
                                                   text_cursor.selectionEnd())
 
@@ -617,7 +617,7 @@ class TextHelper:
         text_cursor.insertText(text)
         if keep_position:
             text_cursor.setPosition(s)
-            text_cursor.setPosition(e, text_cursor.KeepAnchor)
+            text_cursor.setPosition(e, QtGui.QTextCursor.KeepAnchor)
         self._editor.setTextCursor(text_cursor)
 
     def clear_selection(self):
@@ -639,8 +639,8 @@ class TextHelper:
         """
         text_cursor = self._editor.textCursor()
         text_cursor.movePosition(
-            text_cursor.Right, text_cursor.KeepAnchor if keep_anchor else
-            text_cursor.MoveAnchor, nb_chars)
+            QtGui.QTextCursor.Right, QtGui.QTextCursor.KeepAnchor if keep_anchor else
+            QtGui.QTextCursor.MoveAnchor, nb_chars)
         self._editor.setTextCursor(text_cursor)
 
     def selected_text_to_lower(self):
@@ -746,7 +746,7 @@ class TextHelper:
         seps = self._editor.word_separators + [' ']
         while not stop:
             cursor.clearSelection()
-            cursor.movePosition(cursor.Left, cursor.KeepAnchor)
+            cursor.movePosition(QtGui.QTextCursor.Left, QtGui.QTextCursor.KeepAnchor)
             char = cursor.selectedText()
             if cursor.atBlockStart():
                 stop = True
@@ -759,7 +759,7 @@ class TextHelper:
         stop = False
         while not stop:
             cursor.clearSelection()
-            cursor.movePosition(cursor.Right, cursor.KeepAnchor)
+            cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.KeepAnchor)
             char = cursor.selectedText()
             if cursor.atBlockEnd():
                 stop = True
@@ -771,7 +771,7 @@ class TextHelper:
                 end_pos = cursor.position() - 1
         if start_pos and end_pos:
             cursor.setPosition(start_pos)
-            cursor.movePosition(cursor.Right, cursor.KeepAnchor,
+            cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.KeepAnchor,
                                 end_pos - start_pos)
             self._editor.setTextCursor(cursor)
 
@@ -806,7 +806,7 @@ class TextHelper:
             stop = False
             while not stop and not cursor.atStart():
                 cursor.clearSelection()
-                cursor.movePosition(cursor.Left, cursor.KeepAnchor)
+                cursor.movePosition(QtGui.QTextCursor.Left, QtGui.QTextCursor.KeepAnchor)
                 char = cursor.selectedText()
                 if char in closed.keys():
                     closed[char] += 1
@@ -839,7 +839,7 @@ class TextHelper:
             stop = False
             while not stop and not cursor.atEnd():
                 cursor.clearSelection()
-                cursor.movePosition(cursor.Right, cursor.KeepAnchor)
+                cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.KeepAnchor)
                 char = cursor.selectedText()
                 if char in opened.keys():
                     opened[char] += 1
@@ -865,7 +865,7 @@ class TextHelper:
                 cursor, matching, opening_char, original_pos)
         if start_pos and end_pos:
             cursor.setPosition(start_pos)
-            cursor.movePosition(cursor.Right, cursor.KeepAnchor,
+            cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.KeepAnchor,
                                 end_pos - start_pos)
             self._editor.setTextCursor(cursor)
             return True
@@ -1062,9 +1062,9 @@ def get_block_symbol_data(editor, block):
         text = block.text()
         symbols = []
         cursor = QtGui.QTextCursor(block)
-        cursor.movePosition(cursor.StartOfBlock)
+        cursor.movePosition(QtGui.QTextCursor.StartOfBlock)
         pos = text.find(character, 0)
-        cursor.movePosition(cursor.Right, cursor.MoveAnchor, pos)
+        cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.MoveAnchor, pos)
 
         while pos != -1:
             if not TextHelper(editor).is_comment_or_string(cursor):
@@ -1072,8 +1072,8 @@ def get_block_symbol_data(editor, block):
                 info = ParenthesisInfo(pos, character)
                 symbols.append(info)
             pos = text.find(character, pos + 1)
-            cursor.movePosition(cursor.StartOfBlock)
-            cursor.movePosition(cursor.Right, cursor.MoveAnchor, pos)
+            cursor.movePosition(QtGui.QTextCursor.StartOfBlock)
+            cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.MoveAnchor, pos)
         return symbols
 
     parentheses = sorted(

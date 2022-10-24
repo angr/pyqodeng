@@ -863,7 +863,7 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         if has_selection:
             pos = cursor.position()
             cursor.setPosition(end + 1)
-            cursor.setPosition(pos, cursor.KeepAnchor)
+            cursor.setPosition(pos, QtGui.QTextCursor.KeepAnchor)
         self.setTextCursor(cursor)
 
     def indent(self):
@@ -908,10 +908,10 @@ class CodeEdit(QtWidgets.QPlainTextEdit):
         tc = self.textCursor()
         tc.beginEditBlock()
         if not tc.hasSelection():
-            tc.movePosition(tc.StartOfLine)
-            tc.movePosition(tc.Left)
-            tc.movePosition(tc.Right, tc.KeepAnchor)
-            tc.movePosition(tc.EndOfLine, tc.KeepAnchor)
+            tc.movePosition(QtGui.QTextCursor.StartOfLine)
+            tc.movePosition(QtGui.QTextCursor.Left)
+            tc.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.KeepAnchor)
+            tc.movePosition(QtGui.QTextCursor.EndOfLine, QtGui.QTextCursor.KeepAnchor)
             from_selection = False
         else:
             from_selection = True

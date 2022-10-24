@@ -69,11 +69,11 @@ class TextDecoration(QtWidgets.QTextEdit.ExtraSelection):
         if end_pos is not None:
             self.cursor.setPosition(end_pos, QtGui.QTextCursor.KeepAnchor)
         if start_line is not None:
-            self.cursor.movePosition(self.cursor.Start, self.cursor.MoveAnchor)
-            self.cursor.movePosition(self.cursor.Down, self.cursor.MoveAnchor,
+            self.cursor.movePosition(QtGui.QTextCursor.Start, QtGui.QTextCursor.MoveAnchor)
+            self.cursor.movePosition(QtGui.QTextCursor.Down, QtGui.QTextCursor.MoveAnchor,
                                      start_line)
         if end_line is not None:
-            self.cursor.movePosition(self.cursor.Down, self.cursor.KeepAnchor,
+            self.cursor.movePosition(QtGui.QTextCursor.Down, QtGui.QTextCursor.KeepAnchor,
                                      end_line - start_line)
 
     def contains_cursor(self, cursor):
@@ -127,12 +127,12 @@ class TextDecoration(QtWidgets.QTextEdit.ExtraSelection):
         and stops at the non-whitespace character.
         :return:
         """
-        self.cursor.movePosition(self.cursor.StartOfBlock)
+        self.cursor.movePosition(QtGui.QTextCursor.StartOfBlock)
         text = self.cursor.block().text()
         lindent = len(text) - len(text.lstrip())
         self.cursor.setPosition(self.cursor.block().position() + lindent)
-        self.cursor.movePosition(self.cursor.EndOfBlock,
-                                 self.cursor.KeepAnchor)
+        self.cursor.movePosition(QtGui.QTextCursor.EndOfBlock,
+                                 QtGui.QTextCursor.KeepAnchor)
 
     def set_full_width(self, flag=True, clear=True):
         """

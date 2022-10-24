@@ -285,7 +285,7 @@ class OutputWindow(CodeEdit):
         self.setTextCursor(tc)
         if self.input_handler.key_press_event(event):
             tc.setPosition(sel_start)
-            tc.setPosition(sel_end, tc.KeepAnchor)
+            tc.setPosition(sel_end, QtGui.QTextCursor.KeepAnchor)
             self.setTextCursor(tc)
             super(OutputWindow, self).keyPressEvent(event)
         self._formatter._last_cursor_pos = self.textCursor().position()
@@ -810,7 +810,7 @@ class ImmediateInputHandler(InputHandler):
         """
         if event.key() == QtCore.Qt.Key_Return:
             cursor = self.edit.textCursor()
-            cursor.movePosition(cursor.EndOfBlock)
+            cursor.movePosition(QtGui.QTextCursor.EndOfBlock)
             self.edit.setTextCursor(cursor)
         code = _qkey_to_ascii(event)
         if code:
@@ -1038,13 +1038,13 @@ class BufferedInputHandler(InputHandler):
             return False
         if event.key() == QtCore.Qt.Key_Home:
             tc = self.edit.textCursor()
-            tc.movePosition(tc.StartOfBlock)
-            tc.movePosition(tc.Right, tc.MoveAnchor, self.edit._formatter._prefix_len)
+            tc.movePosition(QtGui.QTextCursor.StartOfBlock)
+            tc.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.MoveAnchor, self.edit._formatter._prefix_len)
             self.edit.setTextCursor(tc)
             return False
         if event.key() == QtCore.Qt.Key_End:
             tc = self.edit.textCursor()
-            tc.movePosition(tc.EndOfBlock)
+            tc.movePosition(QtGui.QTextCursor.EndOfBlock)
             self.edit.setTextCursor(tc)
             self._cursor_pos = len(self._get_input_buffer())
             return False
@@ -1052,7 +1052,7 @@ class BufferedInputHandler(InputHandler):
             if self.is_code_completion_popup_visible():
                 return True
             tc = self.edit.textCursor()
-            tc.movePosition(tc.EndOfBlock)
+            tc.movePosition(QtGui.QTextCursor.EndOfBlock)
             self.edit.setTextCursor(tc)
             # send the user input to the child process
             if self.edit.flg_use_pty or 'cmd.exe' in self.process.program():
@@ -1221,7 +1221,7 @@ class OutputFormatter:
                             nchar = None
                         if self._cursor.positionInBlock() > 80 and self.flg_bash and nchar != '\n':
                             self._linefeed()
-                        self._cursor.movePosition(self._cursor.StartOfBlock)
+                        self._cursor.movePosition(QtGui.QTextCursor.StartOfBlock)
                         self._text_edit.setTextCursor(self._cursor)
                     else:
                         to_draw += char
@@ -1250,11 +1250,11 @@ class OutputFormatter:
         last_line = self._cursor.blockNumber() == self._text_edit.blockCount() - 1
         if self._cursor.atEnd() or last_line:
             if last_line:
-                self._cursor.movePosition(self._cursor.EndOfBlock)
+                self._cursor.movePosition(QtGui.QTextCursor.EndOfBlock)
             self._cursor.insertText('\n')
         else:
-            self._cursor.movePosition(self._cursor.Down)
-            self._cursor.movePosition(self._cursor.StartOfBlock)
+            self._cursor.movePosition(QtGui.QTextCursor.Down)
+            self._cursor.movePosition(QtGui.QTextCursor.StartOfBlock)
         self._text_edit.setTextCursor(self._cursor)
 
     def _cursor_down(self, value):
@@ -1265,7 +1265,7 @@ class OutputFormatter:
         if self._cursor.atEnd():
             self._cursor.insertText('\n')
         else:
-            self._cursor.movePosition(self._cursor.Down, self._cursor.MoveAnchor, value)
+            self._cursor.movePosition(QtGui.QTextCursor.Down, QtGui.QTextCursor.MoveAnchor, value)
         self._last_cursor_pos = self._cursor.position()
 
     def _cursor_up(self, value):
@@ -1276,7 +1276,7 @@ class OutputFormatter:
         if value == 0:
             value = 1
         self._cursor.clearSelection()
-        self._cursor.movePosition(self._cursor.Up, self._cursor.MoveAnchor, value)
+        self._cursor.movePosition(QtGui.QTextCursor.Up, QtGui.QTextCursor.MoveAnchor, value)
         self._last_cursor_pos = self._cursor.position()
 
     def _cursor_position(self, data):
@@ -1293,14 +1293,14 @@ class OutputFormatter:
         Moves the cursor to the specified column, if possible.
         """
         last_col = len(self._cursor.block().text())
-        self._cursor.movePosition(self._cursor.EndOfBlock)
+        self._cursor.movePosition(QtGui.QTextCursor.EndOfBlock)
         to_insert = ''
         for i in range(column - last_col):
             to_insert += ' '
         if to_insert:
             self._cursor.insertText(to_insert)
-        self._cursor.movePosition(self._cursor.StartOfBlock)
-        self._cursor.movePosition(self._cursor.Right, self._cursor.MoveAnchor, column)
+        self._cursor.movePosition(QtGui.QTextCursor.StartOfBlock)
+        self._cursor.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.MoveAnchor, column)
         self._last_cursor_pos = self._cursor.position()
 
     def _move_cursor_to_line(self, line):
@@ -1315,8 +1315,8 @@ class OutputFormatter:
             to_insert += '\n'
         if to_insert:
             self._cursor.insertText(to_insert)
-        self._cursor.movePosition(self._cursor.Start)
-        self._cursor.movePosition(self._cursor.Down, self._cursor.MoveAnchor, line)
+        self._cursor.movePosition(QtGui.QTextCursor.Start)
+        self._cursor.movePosition(QtGui.QTextCursor.Down, QtGui.QTextCursor.MoveAnchor, line)
         self._last_cursor_pos = self._cursor.position()
 
     def _cursor_horizontal_absolute(self, column):
@@ -1359,14 +1359,14 @@ class OutputFormatter:
         initial_pos = self._cursor.position()
         if value == 0:
             # delete end of line
-            self._cursor.movePosition(self._cursor.EndOfBlock, self._cursor.KeepAnchor)
+            self._cursor.movePosition(QtGui.QTextCursor.EndOfBlock, QtGui.QTextCursor.KeepAnchor)
         elif value == 1:
             # delete start of line
-            self._cursor.movePosition(self._cursor.StartOfBlock, self._cursor.KeepAnchor)
+            self._cursor.movePosition(QtGui.QTextCursor.StartOfBlock, QtGui.QTextCursor.KeepAnchor)
         else:
             # delete whole line
-            self._cursor.movePosition(self._cursor.StartOfBlock)
-            self._cursor.movePosition(self._cursor.EndOfBlock, self._cursor.KeepAnchor)
+            self._cursor.movePosition(QtGui.QTextCursor.StartOfBlock)
+            self._cursor.movePosition(QtGui.QTextCursor.EndOfBlock, QtGui.QTextCursor.KeepAnchor)
         self._cursor.insertText(' ' * len(self._cursor.selectedText()))
         self._cursor.setPosition(initial_pos)
         self._text_edit.setTextCursor(self._cursor)
@@ -1378,14 +1378,14 @@ class OutputFormatter:
         """
         if value == 0:
             # delete end of line
-            self._cursor.movePosition(self._cursor.End, self._cursor.KeepAnchor)
+            self._cursor.movePosition(QtGui.QTextCursor.End, QtGui.QTextCursor.KeepAnchor)
         elif value == 1:
             # delete start of line
-            self._cursor.movePosition(self._cursor.Start, self._cursor.KeepAnchor)
+            self._cursor.movePosition(QtGui.QTextCursor.Start, KQtGui.QTextCursor.eepAnchor)
         else:
             # delete whole line
-            self._cursor.movePosition(self._cursor.Start)
-            self._cursor.movePosition(self._cursor.End, self._cursor.KeepAnchor)
+            self._cursor.movePosition(QtGui.QTextCursor.Start)
+            self._cursor.movePosition(QtGui.QTextCursor.End, QtGui.QTextCursor.KeepAnchor)
         self._cursor.removeSelectedText()
         self._last_cursor_pos = self._cursor.position()
 
@@ -1395,7 +1395,7 @@ class OutputFormatter:
         """
         if value <= 0:
             value = 1
-        self._cursor.movePosition(self._cursor.Left, self._cursor.MoveAnchor, value)
+        self._cursor.movePosition(QtGui.QTextCursor.Left, QtGui.QTextCursor.MoveAnchor, value)
         self._text_edit.setTextCursor(self._cursor)
         self._last_cursor_pos = self._cursor.position()
 
@@ -1405,7 +1405,7 @@ class OutputFormatter:
         """
         if value <= 0:
             value = 1
-        self._cursor.movePosition(self._cursor.Right, self._cursor.MoveAnchor, value)
+        self._cursor.movePosition(QtGui.QTextCursor.Right, self._cursor.MoveAnchor, value)
         self._text_edit.setTextCursor(self._cursor)
         self._last_cursor_pos = self._cursor.position()
 

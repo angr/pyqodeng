@@ -420,7 +420,7 @@ class SearchAndReplacePanel(Panel, Ui_SearchPanel):
             cursor = self.editor.textCursor()
             cursor.setPosition(occurrences[current_occurence][0])
             cursor.setPosition(occurrences[current_occurence][1],
-                               cursor.KeepAnchor)
+                               QtGui.QTextCursor.KeepAnchor)
             self.editor.setTextCursor(cursor)
             return True
         except IndexError:
@@ -462,7 +462,7 @@ class SearchAndReplacePanel(Panel, Ui_SearchPanel):
             cursor = self.editor.textCursor()
             cursor.setPosition(occurrences[current_occurence][0])
             cursor.setPosition(occurrences[current_occurence][1],
-                               cursor.KeepAnchor)
+                               QtGui.QTextCursor.KeepAnchor)
             self.editor.setTextCursor(cursor)
             return True
         except IndexError:
@@ -495,7 +495,7 @@ class SearchAndReplacePanel(Panel, Ui_SearchPanel):
             occ = occurrences[current_occurences]
             cursor = self.editor.textCursor()
             cursor.setPosition(occ[0])
-            cursor.setPosition(occ[1], cursor.KeepAnchor)
+            cursor.setPosition(occ[1], QtGui.QTextCursor.KeepAnchor)
             len_to_replace = len(cursor.selectedText())
             len_replacement = len(text)
             offset = len_replacement - len_to_replace

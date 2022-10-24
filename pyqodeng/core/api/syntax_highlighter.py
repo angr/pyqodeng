@@ -172,7 +172,7 @@ class ColorScheme:
         if token in [Token.Literal.String, Token.Literal.String.Doc,
                      Token.Comment]:
             # mark strings, comments and docstrings regions for further queries
-            result.setObjectType(result.UserObject)
+            result.setObjectType(QtGui.QTextCharFormat.UserObject)
         return result
 
     def _get_brush(self, color):

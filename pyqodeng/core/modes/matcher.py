@@ -240,7 +240,7 @@ class SymbolMatcherMode(Mode):
     def _create_decoration(self, pos, match=True):
         cursor = self.editor.textCursor()
         cursor.setPosition(pos)
-        cursor.movePosition(cursor.NextCharacter, cursor.KeepAnchor)
+        cursor.movePosition(QtGui.QTextCursor.NextCharacter, QtGui.QTextCursor.KeepAnchor)
         deco = TextDecoration(cursor, draw_order=10)
         deco.line = cursor.blockNumber()
         deco.column = cursor.columnNumber()

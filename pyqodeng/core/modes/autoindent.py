@@ -59,7 +59,7 @@ class AutoIndentMode(Mode):
                 cursor.insertText("%s\n%s" % (pre, post))
 
                 # eats possible whitespaces
-                cursor.movePosition(cursor.WordRight, cursor.KeepAnchor)
+                cursor.movePosition(QtGui.QTextCursor.WordRight, QtGui.QTextCursor.KeepAnchor)
                 txt = cursor.selectedText()
                 if txt.startswith(' '):
                     new_txt = txt.replace(" ", '')

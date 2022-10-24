@@ -668,7 +668,7 @@ class FoldingPanel(Panel):
                         else:
                             end = tc.selectionEnd()
                         tc.setPosition(start)
-                        tc.setPosition(end, tc.KeepAnchor)
+                        tc.setPosition(end, QtGui.QTextCursor.KeepAnchor)
                         self.editor.setTextCursor(tc)
 
     @staticmethod

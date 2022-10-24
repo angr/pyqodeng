@@ -43,7 +43,7 @@ class AutoCompleteMode(Mode):
             txt = event.text()
             trav = self.editor.textCursor()
             assert isinstance(trav, QtGui.QTextCursor)
-            trav.movePosition(trav.Left, trav.MoveAnchor, 2)
+            trav.movePosition(QtGui.QTextCursor.Left, QtGui.QTextCursor.MoveAnchor, 2)
             literal = TextHelper(self.editor).is_comment_or_string(trav)
             if not literal:
                 next_char = TextHelper(self.editor).get_right_character()
@@ -81,13 +81,13 @@ class AutoCompleteMode(Mode):
             # get the character that will get deleted
             tc = self.editor.textCursor()
             pos = tc.position()
-            tc.movePosition(tc.Left)
-            tc.movePosition(tc.Right, tc.KeepAnchor)
+            tc.movePosition(QtGui.QTextCursor.Left)
+            tc.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.KeepAnchor)
             del_char = tc.selectedText()
             if del_char in self.MAPPING and \
                     self.MAPPING[del_char] == next_char:
                 tc.beginEditBlock()
-                tc.movePosition(tc.Right, tc.KeepAnchor)
+                tc.movePosition(QtGui.QTextCursor.Right, QtGui.QTextCursor.KeepAnchor)
                 tc.insertText('')
                 tc.setPosition(pos - 2)
                 tc.endEditBlock()

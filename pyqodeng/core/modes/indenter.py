@@ -69,7 +69,7 @@ class IndenterMode(Mode):
         # indent every lines
         while i < nb_lines:
             cursor = QtGui.QTextCursor(block)
-            cursor.movePosition(cursor.StartOfLine, cursor.MoveAnchor)
+            cursor.movePosition(QtGui.QTextCursor.StartOfLine, QtGui.QTextCursor.MoveAnchor)
             cursor.insertText(self._single_indent)
             block = block.next()
             i += 1
@@ -91,14 +91,14 @@ class IndenterMode(Mode):
         debug('unindent selection: %d lines', nb_lines)
         start_pos = block.position()
         while i < nb_lines:
-            cursor.setPosition(block.position(), cursor.MoveAnchor)
+            cursor.setPosition(block.position(), QtGui.QTextCursor.MoveAnchor)
             txt = block.text()
             debug('line to unindent: %s', txt)
             debug('self.editor.use_spaces_instead_of_tabs: %r',
                   self.editor.use_spaces_instead_of_tabs)
             indentation = len(txt) - len(txt.lstrip(self._indent_char))
             debug('unindent line %d: %d characters', i, indentation)
-            cursor.movePosition(cursor.StartOfLine, cursor.MoveAnchor)
+            cursor.movePosition(QtGui.QTextCursor.StartOfLine, QtGui.QTextCursor.MoveAnchor)
             for _ in range(len(self._single_indent)):
                 txt = block.text()
                 if len(txt) and txt[0] == self._indent_char:
@@ -107,8 +107,8 @@ class IndenterMode(Mode):
             block = block.next()
             i += 1
         # Restore selection
-        cursor.setPosition(start_pos, cursor.MoveAnchor)
-        cursor.setPosition(end_pos, cursor.KeepAnchor)
+        cursor.setPosition(start_pos, QtGui.QTextCursor.MoveAnchor)
+        cursor.setPosition(end_pos, QtGui.QTextCursor.KeepAnchor)
         return cursor
 
     def indent(self):
@@ -139,7 +139,7 @@ class IndenterMode(Mode):
         trav_cursor = QtGui.QTextCursor(cursor)
         while spaces < max_spaces or trav_cursor.atBlockStart():
             pos = trav_cursor.position()
-            trav_cursor.movePosition(cursor.Left, cursor.KeepAnchor)
+            trav_cursor.movePosition(QtGui.QTextCursor.Left, QtGui.QTextCursor.KeepAnchor)
             char = trav_cursor.selectedText()
             if char == self._indent_char:
                 spaces += 1
