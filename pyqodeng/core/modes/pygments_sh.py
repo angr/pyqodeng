@@ -286,7 +286,7 @@ class PygmentsSH(SyntaxHighlighter):
                 fmt = self._get_format(token)
                 if token in [Token.Literal.String, Token.Literal.String.Doc,
                              Token.Comment]:
-                    fmt.setObjectType(fmt.UserObject)
+                    fmt.setObjectType(QtGui.QTextCharFormat.UserObject)
                 self.setFormat(index, length, fmt)
                 index += length
 
