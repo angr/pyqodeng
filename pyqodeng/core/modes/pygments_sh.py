@@ -336,6 +336,9 @@ class PygmentsSH(SyntaxHighlighter):
         if token == Whitespace:
             return self.editor.whitespaces_foreground
 
+        if token in self.color_scheme.formats:
+            return self.color_scheme.formats[token]
+
         if token in self._formats:
             return self._formats[token]
 
