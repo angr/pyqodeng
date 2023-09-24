@@ -298,12 +298,10 @@ class PygmentsSH(SyntaxHighlighter):
             # spaces
             text = original_text
             expression = QRegularExpression(r'\s+')
-            index = expression.indexIn(text, 0)
-            while index >= 0:
-                index = expression.pos(0)
-                length = len(expression.cap(0))
-                self.setFormat(index, length, self._get_format(Whitespace))
-                index = expression.indexIn(text, index + length)
+            matches = expression.globalMatch(text)
+            while matches.hasNext():
+                m = matches.next()
+                self.setFormat(m.capturedStart(), m.capturedLength(), self._get_format(Whitespace))
 
             self._prev_block = block
 

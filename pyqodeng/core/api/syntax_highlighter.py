@@ -301,12 +301,10 @@ class SyntaxHighlighter(Mode, QtGui.QSyntaxHighlighter):
             self.setDocument(None)
 
     def _highlight_whitespaces(self, text):
-        index = self.WHITESPACES.indexIn(text, 0)
-        while index >= 0:
-            index = self.WHITESPACES.pos(0)
-            length = len(self.WHITESPACES.cap(0))
-            self.setFormat(index, length, self.formats['whitespace'])
-            index = self.WHITESPACES.indexIn(text, index + length)
+        matches = self.WHITESPACES.globalMatch(text)
+        while matches.hasNext():
+            m = matches.next()
+            self.setFormat(m.capturedStart(), m.capturedLength(), self.formats['whitespace'])
 
     @staticmethod
     def _find_prev_non_blank_block(current_block):
