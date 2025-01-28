@@ -1,7 +1,7 @@
 """
 This module contains the smart backspace mode
 """
-from qtpy import QtCore, QtGui
+from qtpy.QtGui import QTextCursor
 from pyqodeng.core.api import Mode
 
 
@@ -20,8 +20,7 @@ class SmartBackSpaceMode(Mode):
             self.editor.key_pressed.disconnect(self._on_key_pressed)
 
     def _on_key_pressed(self, event):
-        no_modifiers = int(event.modifiers()) == QtCore.Qt.NoModifier
-        if event.key() == QtCore.Qt.Key_Backspace and no_modifiers:
+        if event.key() == Qt.Key_Backspace and not event.modifiers():
             if self.editor.textCursor().atBlockStart():
                 return
             tab_len = self.editor.tab_length
@@ -30,10 +29,10 @@ class SmartBackSpaceMode(Mode):
                 tab_len = self.editor.tab_length
             # count the number of spaces deletable, stop at tab len
             spaces = 0
-            cursor = QtGui.QTextCursor(self.editor.textCursor())
+            cursor = QTextCursor(self.editor.textCursor())
             while spaces < tab_len or cursor.atBlockStart():
                 pos = cursor.position()
-                cursor.movePosition(QtGui.QTextCursor.Left, QtGui.QTextCursor.KeepAnchor)
+                cursor.movePosition(QTextCursor.Left, QTextCursor.KeepAnchor)
                 char = cursor.selectedText()
                 if char == " ":
                     spaces += 1
