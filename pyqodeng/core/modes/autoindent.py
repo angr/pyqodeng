@@ -51,19 +51,10 @@ class AutoIndentMode(Mode):
         Auto indent if the released key is the return key.
         :param event: the key event
         """
-        if not event.isAccepted():
-            if event.key() == Qt.Key_Return or event.key() == Qt.Key_Enter:
-                cursor = self.editor.textCursor()
-                pre, post = self._get_indent(cursor)
-                cursor.beginEditBlock()
-                cursor.insertText("%s\n%s" % (pre, post))
-
-                # eats possible whitespaces
-                cursor.movePosition(QtGui.QTextCursor.WordRight, QtGui.QTextCursor.KeepAnchor)
-                txt = cursor.selectedText()
-                if txt.startswith(' '):
-                    new_txt = txt.replace(" ", '')
-                    if len(txt) > len(new_txt):
-                        cursor.insertText(new_txt)
-                cursor.endEditBlock()
-                event.accept()
+        if not event.isAccepted() and (event.key() == Qt.Key_Return or event.key() == Qt.Key_Enter):
+            cursor = self.editor.textCursor()
+            pre, post = self._get_indent(cursor)
+            cursor.beginEditBlock()
+            cursor.insertText(f"{pre}\n{post}")
+            cursor.endEditBlock()
+            event.accept()
