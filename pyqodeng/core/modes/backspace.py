@@ -2,6 +2,7 @@
 This module contains the smart backspace mode
 """
 from qtpy.QtGui import QTextCursor
+from qtpy.QtCore import Qt
 from pyqodeng.core.api import Mode
 
 
