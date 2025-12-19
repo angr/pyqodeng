@@ -2,7 +2,6 @@
 """
 This module contains the main window implementation.
 """
-from __future__ import print_function
 import weakref
 
 import mimetypes
