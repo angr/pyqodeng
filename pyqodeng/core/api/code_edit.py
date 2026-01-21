@@ -1,7 +1,6 @@
 """
 This module contains the base code editor widget.
 """
-from __future__ import print_function
 import os
 import sys
 import logging

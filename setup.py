@@ -77,7 +77,7 @@ setup(
     author_email='colin.duquesnoy@gmail.com',
     description=DESCRIPTION,
     long_description=readme(),
-    install_requires=[pygments_req, 'qtpy>=2.2.1', 'future', "PySide6-Essentials"],
+    install_requires=[pygments_req, 'qtpy>=2.2.1', "PySide6-Essentials"],
     tests_require=['pytest-xdist', 'pytest-cov', 'pytest-pep8', 'pytest'],
     entry_points={
         'console_scripts': [
