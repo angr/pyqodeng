@@ -58,7 +58,7 @@ def test_auto_detect_eol(editor, system, eol):
     editor.file.open(filename)
     assert editor.file._eol == eol
     editor.file.save()
-    with open(filename, 'Ur') as f:
+    with open(filename, 'r') as f:
         print(f.read())
         assert f.newlines == eol
     os.remove(filename)
@@ -80,7 +80,7 @@ def test_preferred_encodings(editor, preferred_eol):
     assert editor.file._eol == editor.file.EOL.string(preferred_eol)
     editor.appendPlainText('some text')
     editor.file.save()
-    with open(fn, 'Ur') as f:
+    with open(fn, 'r') as f:
         print(f.read())
         assert f.newlines == editor.file.EOL.string(preferred_eol)
     os.remove(fn)
