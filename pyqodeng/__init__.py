@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-pyQode is a source code editor widget for Python Qt (PyQt5/PyQt4/PySide)
-
-pyQode is a **namespace package**.
+pyQodeNG is a source code editor widget for Python Qt 6 (PySide6/PyQt6). It is a fork of pyQode.
+The original pyQode can be found at https://github.com/pyQode/pyqode.core.
 """
-import pkg_resources
-pkg_resources.declare_namespace(__name__)
